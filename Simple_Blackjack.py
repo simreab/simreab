@@ -78,19 +78,20 @@ initial_bet = int(input('How much money would you like to start with? '))
 player.cash = initial_bet
 
 
-new_deck = Deck()
-new_deck.shuffle()
+
+
 
 game_on = True
 new_round = True
 
 #game logic
 while game_on:
-
+    
+    new_deck = Deck()
     new_deck.shuffle()
     if player.cash == 0:
         print(player)
-        print(f'Sorry, you have lost all your money. GOOD DAY!')
+        print('Sorry, you have lost all your money. GOOD DAY!')
         new_round = False
         break
     bet = int(input('How much would you like to bet? Enter "0" to stop playing. '))
@@ -138,7 +139,7 @@ while game_on:
                         player.cash -= bet
                         player_lost()
                         break
-                    while (dealer.hand_sum() < player.hand_sum()):
+                    while (dealer.hand_sum() <= player.hand_sum()):
                         dealer.add_cards(new_deck.deal_one())
                         dealer.show_hand()
                         continue

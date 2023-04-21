@@ -156,11 +156,11 @@ while game_on:
         new_round = False
         if player.cash > initial_bet:
             print(player)
-            print(f'3 CONGRATULATIONS! You have Won {player.cash - initial_bet}.')
+            print(f'CONGRATULATIONS! You have Won {player.cash - initial_bet}.')
             break
         elif player.cash < initial_bet:
             print(player)
-            print(f'3 Sorry, you have lost {initial_bet - player.cash}.')
+            print(f'Sorry, you have lost {initial_bet - player.cash}.')
             break
         else:
             print(player)

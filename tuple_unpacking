@@ -1,0 +1,31 @@
+print(os.getcwd())
+# the archive file
+filename = "/home/runner/test1/12-Advanced Python Modules/08-Advanced-Python-Module-Exercise/unzip_me_for_instructions.zip"
+ 
+# Target directory
+extract_dir = "/home/runner/test1/12-Advanced Python Modules"
+
+#shutil.unpack_archive(filename, extract_dir, 'zip')
+#print("Archive file unpacked successfully.")
+
+file_path = "/home/runner/test1/12-Advanced Python Modules/extracted_content"
+
+for folder, sub_folders, files in os.walk(file_path):
+    print(f'currently looking at {folder}')
+    print('\n')
+    print('The subfolders are: ')
+    for sub_folder in sub_folders:
+        print(f"\tsubfolder: {sub_folder}")
+    print('\n')
+    print('The files are: ')
+    for file in files:
+        fullpath = os.path.join(file_path, folder, file)
+        f = open(fullpath, 'r')
+        print('file read')
+        text = f.read()
+        if re.search(r'\d{3}-\d{3}-\d{4}', text):
+            print('number found')
+            number = re.search(r'\d{3}-\d{3}-\d{4}', text)
+            print (re.search(r'\d{3}-\d{3}-\d{4}', text).group())
+
+print(f'The phone number is {number.group()}')

@@ -109,7 +109,13 @@ while game_on:
             dealer.show_hand()
             player.show_hand()
             print(f"your hand sum is {player.hand_sum()}")
-            pd = int(input('Enter 1 to Hit or 2 to Stay. '))
+
+            pd_input = int(input('Enter 1 to Hit or 2 to Stay. ')) 
+            if pd_input in [1,2]:
+                pd = pd_input
+            else:
+                print("Invalid Input.")
+                continue
 
             if player.hand_sum() == 21:
                 player.cash += bet

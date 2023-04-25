@@ -110,6 +110,11 @@ while game_on:
             player.show_hand()
             print(f"your hand sum is {player.hand_sum()}")
 
+            if player.hand_sum() == 21:
+                player.cash += bet
+                player_won()
+                break
+                
             pd_input = int(input('Enter 1 to Hit or 2 to Stay. ')) 
             if pd_input in [1,2]:
                 pd = pd_input
@@ -117,11 +122,7 @@ while game_on:
                 print("Invalid Input.")
                 continue
 
-            if player.hand_sum() == 21:
-                player.cash += bet
-                player_won()
-                break
-            elif pd == 1:
+            if pd == 1:
                 player.add_cards(new_deck.deal_one())
                 if player.hand_sum() > 21:
                     player.cash -= bet
